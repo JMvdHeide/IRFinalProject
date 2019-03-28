@@ -8,7 +8,8 @@ from classification import precision_recall
 import nltk
 from nltk.classify import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB
-
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC, LinearSVC, NuSVC
 import sys
 
 def get_feats(time_of_day, data_set):
@@ -25,7 +26,7 @@ def get_feats(time_of_day, data_set):
 
 			bag = bag_of_words(tokens)
 			feats.append((bag, line[1]))
-			if c == 500000:
+			if c == 100000:
 				break
 	print("{} {} tweets read".format(c, time_of_day))
 
@@ -34,7 +35,7 @@ def get_feats(time_of_day, data_set):
 def train(train_feats):
 	"""Trains a classifier"""
 	print ("\n##### Training classifier...")
-	classifier = SklearnClassifier(MultinomialNB()).train(train_feats)
+	classifier = SklearnClassifier(LinearSVC()).train(train_feats)
 	return classifier
 
 def calculate_f(precisions, recalls):

@@ -23,9 +23,12 @@ def write_tweets(tweets,file,folder):
         writer = csv.writer(outfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         for tweet in tweets:
             scores = sia.polarity_scores(tweet)
-            del scores['compound']
-            sorted_scores = sorted(scores.items(),key=operator.itemgetter(1),reverse=True)
-            writer.writerow((tweet,sorted_scores[0][0]))
+            if scores['compound'] > 0:
+                writer.writerow((tweet,'pos'))
+            elif scores['compound'] < 0:
+                writer.writerow((tweet,'neg'))
+            else:
+                writer.writerow((tweet,'neu'))
     outfile.close()
 
 
