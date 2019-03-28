@@ -11,31 +11,34 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC, LinearSVC, NuSVC
 import sys
+from os import listdir # to read files
+from os.path import isfile, join # to read files
 
-def get_feats(time_of_day, data_set):
+def get_filenames_in_folder(folder):
+	return [f for f in listdir(folder) if isfile(join(folder, f))]
+
+def get_feats(times_of_day, data_set):
 	"""Reads the golden standard CSV file and puts the content in bags of words"""
 	print("\n##### Reading {} files...".format(data_set))
 	feats = list()
-	c = 0
-	with open(time_of_day + '/' + data_set + '.csv') as tweets_csv:
-		readCSV = csv.reader(tweets_csv, delimiter = ',')
-		for line in readCSV:
+	for item in times_of_day:
+		tweets_txt =  open(item + '/' + data_set + '.txt')
+		c = 0
+		for line in tweets_txt.readlines():
 			c+=1
-			text = line[0].lower()
+			text = line.lower()
 			tokens = TweetTokenizer().tokenize(text)
-
 			bag = bag_of_words(tokens)
-			feats.append((bag, line[1]))
-			if c == 100000:
-				break
-	print("{} {} tweets read".format(c, time_of_day))
+			feats.append((bag, item))
+
+		print("{} {} tweets read".format(c, item))
 
 	return feats
 
 def train(train_feats):
 	"""Trains a classifier"""
 	print ("\n##### Training classifier...")
-	classifier = SklearnClassifier(LinearSVC()).train(train_feats)
+	classifier = SklearnClassifier(LogisticRegression()).train(train_feats)
 	return classifier
 
 def calculate_f(precisions, recalls):
@@ -77,8 +80,8 @@ def main():
 	times_of_day = ['morning', 'afternoon']
 
 	for time_of_day in times_of_day:
-		train_feats = get_feats(time_of_day, 'train')
-		test_feats = get_feats(time_of_day, 'test')
+		train_feats = get_feats(times_of_day, 'train')
+		test_feats = get_feats(times_of_day, 'dev')
 
 		classifier = train(train_feats)
 		evaluation(classifier, test_feats, categories)
