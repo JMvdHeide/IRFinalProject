@@ -22,15 +22,15 @@ def read_file(file):
 def write_to_file(training, test, development):
     """Write training, test and development data to all correct files."""
     print('##### Writing to files training, test and development...')
-    with open('training_data.txt', 'w')as f:
+    with open('train.txt', 'w')as f:
         for line in training:
             f.write(line)
     f.close()
-    with open('test_data.txt', 'w')as f:
+    with open('test.txt', 'w')as f:
         for line in test:
             f.write(line)
     f.close()
-    with open('development_data.txt', 'w')as f:
+    with open('dev.txt', 'w')as f:
         for line in development:
             f.write(line)
     f.close()
