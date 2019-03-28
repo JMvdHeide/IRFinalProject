@@ -30,6 +30,8 @@ def get_feats(times_of_day, data_set):
 			tokens = TweetTokenizer().tokenize(text)
 			bag = bag_of_words(tokens)
 			feats.append((bag, item))
+			if c == 50000:
+				break
 
 		print("{} {} tweets read".format(c, item))
 
@@ -75,16 +77,13 @@ def evaluation(classifier, test_feats, categories):
 
 
 def main():
-	categories = ['pos', 'neg', 'neu']
 	data_sets = ['train', 'dev']
 	times_of_day = ['morning', 'afternoon']
+	train_feats = get_feats(times_of_day, 'train')
+	test_feats = get_feats(times_of_day, 'dev')
 
-	for time_of_day in times_of_day:
-		train_feats = get_feats(times_of_day, 'train')
-		test_feats = get_feats(times_of_day, 'dev')
-
-		classifier = train(train_feats)
-		evaluation(classifier, test_feats, categories)
+	classifier = train(train_feats)
+	evaluation(classifier, test_feats, times_of_day)
 
 if __name__ == '__main__':
 	main()
