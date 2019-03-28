@@ -1,0 +1,33 @@
+  429  gunzip -c /net/corpora/twitter2/Tweets/2018/01/20180115\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15012018.txt 
+  433  gunzip -c /net/corpora/twitter2/Tweets/2018/02/20180215\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15022018.txt
+  434  gunzip -c /net/corpora/twitter2/Tweets/2018/03/20180315\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15032018.txt
+  435  gunzip -c /net/corpora/twitter2/Tweets/2018/04/20180415\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15042018.txt
+  437  gunzip -c /net/corpora/twitter2/Tweets/2018/05/20180515\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15052018.txt
+  438  gunzip -c /net/corpora/twitter2/Tweets/2018/06/20180615\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15062018.txt
+  439  gunzip -c /net/corpora/twitter2/Tweets/2018/07/20180715\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15072018.txt
+  440  gunzip -c /net/corpora/twitter2/Tweets/2018/08/20180815\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15082018.txt
+  441  gunzip -c /net/corpora/twitter2/Tweets/2018/09/20180915\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15092018.txt
+  442  gunzip -c /net/corpora/twitter2/Tweets/2018/10/20181015\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15102018.txt
+  443  gunzip -c /net/corpora/twitter2/Tweets/2018/11/20181115\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15112018.txt
+  444  gunzip -c /net/corpora/twitter2/Tweets/2018/12/20181215\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Ochtend/15122018.txt
+  456  gunzip -c /net/corpora/twitter2/Tweets/2018/01/20180115\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15012018.txt
+  457  gunzip -c /net/corpora/twitter2/Tweets/2018/02/20180215\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15022018.txt
+  458  gunzip -c /net/corpora/twitter2/Tweets/2018/03/20180315\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15032018.txt
+  459  gunzip -c /net/corpora/twitter2/Tweets/2018/04/20180415\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15042018.txt
+  460  gunzip -c /net/corpora/twitter2/Tweets/2018/05/20180515\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15052018.txt
+  461  gunzip -c /net/corpora/twitter2/Tweets/2018/06/20180615\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15062018.txt
+  462  gunzip -c /net/corpora/twitter2/Tweets/2018/07/20180715\:08.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15072018.txt
+  468  gunzip -c /net/corpora/twitter2/Tweets/2018/01/20180115\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15012018.txt
+  469  gunzip -c /net/corpora/twitter2/Tweets/2018/02/20180215\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15022018.txt
+  470  gunzip -c /net/corpora/twitter2/Tweets/2018/03/20180315\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15032018.txt
+  471  gunzip -c /net/corpora/twitter2/Tweets/2018/04/20180415\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15042018.txt
+  472  gunzip -c /net/corpora/twitter2/Tweets/2018/05/20180515\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15052018.txt
+  473  gunzip -c /net/corpora/twitter2/Tweets/2018/06/20180615\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15062018.txt
+  474  gunzip -c /net/corpora/twitter2/Tweets/2018/07/20180715\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15072018.txt
+  475  gunzip -c /net/corpora/twitter2/Tweets/2018/08/20180815\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15082018.txt
+  476  gunzip -c /net/corpora/twitter2/Tweets/2018/09/20180915\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15092018.txt
+  477  gunzip -c /net/corpora/twitter2/Tweets/2018/10/20181015\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15102018.txt
+  478  gunzip -c /net/corpora/twitter2/Tweets/2018/11/20181115\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15112018.txt
+  479  gunzip -c /net/corpora/twitter2/Tweets/2018/12/20181215\:18.out.gz | /net/corpora/twitter2/tools/tweet2tab -i user text > /home/s3094731/IR-project/Middag/15122018.txt
+  484  cat 15012018.txt 15022018.txt 15032018.txt 15042018.txt 15052018.txt 15062018.txt 15072018.txt 15082018.txt 15092018.txt 15102018.txt 15112018.txt 15122018.txt > middag_tweets.txt
+  492  cat 15012018.txt 15022018.txt 15032018.txt 15042018.txt 15052018.txt 15062018.txt 15072018.txt 15082018.txt 15092018.txt 15102018.txt 15112018.txt 15122018.txt > ochtend_tweets.txt
