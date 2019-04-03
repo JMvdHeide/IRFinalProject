@@ -1,4 +1,4 @@
- 
+
 
 Only lower, tokenization, bag of words
 
@@ -147,4 +147,25 @@ lower, tokenization, bag of words, removed stopwords
  |-----------|-----------|-----------|-----------|
  |morning    |1.000000   |1.000000   |1.000000   |
  |afternoon  |1.000000   |1.000000   |1.000000   |
+ |-----------|-----------|-----------|-----------|
+
+
+
+English:
+Train files:
+2464912 morning tweets read
+2288540 afternoon tweets read
+
+Test files:
+347298 morning tweets read
+321324 afternoon tweets read
+
+
+  lower, tokenization, bag of words, stemming, removed stopwords, removed words with digits and alpha characters
+  Accuracy: 0.580815
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.563969   |0.850684   |0.678272   |
+ |afternoon  |0.641778   |0.289132   |0.398660   |
  |-----------|-----------|-----------|-----------|
