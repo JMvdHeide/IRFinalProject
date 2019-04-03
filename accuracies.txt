@@ -1,0 +1,150 @@
+ 
+
+Only lower, tokenization, bag of words
+
+ Accuracy: 0.654494
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.558140   |0.644528   |0.598232   |
+ |afternoon  |0.736860   |0.661113   |0.696934   |
+ |-----------|-----------|-----------|-----------|
+
+
+lower, tokenization, bag of words, stemming
+  Accuracy: 0.655104
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.558906   |0.644280   |0.598564   |
+ |afternoon  |0.737070   |0.662293   |0.697684   |
+ |-----------|-----------|-----------|-----------|
+
+
+
+lower, tokenization, bag of words, stemming, removed stopwords
+
+   Accuracy: 0.655154
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.558919   |0.644735   |0.598768   |
+ |afternoon  |0.737254   |0.662074   |0.697644   |
+ |-----------|-----------|-----------|-----------|
+
+
+ lower, tokenization, bag of words, stemming, removed stopwords, strip
+
+   Accuracy: 0.655154
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.558919   |0.644735   |0.598768   |
+ |afternoon  |0.737254   |0.662074   |0.697644   |
+ |-----------|-----------|-----------|-----------|
+
+
+lower, tokenization, bag of words, stemming, removed stopwords, removed punctuation
+  Accuracy: 0.650684
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.553935   |0.640519   |0.594089   |
+ |afternoon  |0.733591   |0.657435   |0.693428   |
+ |-----------|-----------|-----------|-----------|
+
+
+
+lower, tokenization, bag of words, removed punctuation, removed stopwords
+   Accuracy: 0.652234
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.555795   |0.640602   |0.595192   |
+ |afternoon  |0.734384   |0.659960   |0.695186   |
+ |-----------|-----------|-----------|-----------|
+
+
+
+lower, tokenization, bag of words, removed stopwords
+   Accuracy: 0.654362
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.558164   |0.642710   |0.597460   |
+ |afternoon  |0.736159   |0.662101   |0.697169   |
+ |-----------|-----------|-----------|-----------|
+
+
+
+
+ lower, tokenization, bag of words, stemming, removed stopwords, removed words with only Digits
+  Accuracy: 0.655632
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.559522   |0.644528   |0.599024   |
+ |afternoon  |0.737414   |0.663007   |0.698234   |
+ |-----------|-----------|-----------|-----------|
+
+
+ lower, tokenization, bag of words, stemming, removed stopwords, removed words with only Digits, removed URLs
+   Accuracy: 0.655615
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.559502   |0.644528   |0.599013   |
+ |afternoon  |0.737406   |0.662979   |0.698215   |
+ |-----------|-----------|-----------|-----------|
+
+
+ lower, tokenization, bag of words, stemming, removed stopwords, removed URLs
+   Accuracy: 0.655137
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.558899   |0.644735   |0.598756   |
+ |afternoon  |0.737246   |0.662046   |0.697625   |
+ |-----------|-----------|-----------|-----------|
+
+ lower, tokenization, bag of words, stemming, removed stopwords, removed words with only Digits, removed words with Digits and Alpha characters
+   Accuracy: 0.650420
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.553741   |0.639197   |0.593408   |
+ |afternoon  |0.733003   |0.657874   |0.693409   |
+ |-----------|-----------|-----------|-----------|
+
+
+ lower, tokenization, bag of words, stemming, removed stopwords, removed words with Digits and Alpha characters
+   Accuracy: 0.650354
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.553608   |0.639775   |0.593581   |
+ |afternoon  |0.733170   |0.657380   |0.693209   |
+ |-----------|-----------|-----------|-----------|
+
+
+  lower, tokenization, bag of words, stemming, removed stopwords, removed words with Digits and Alpha characters, High information words (train only)
+
+   Accuracy: 0.627658
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |0.569376   |0.275087   |0.370952   |
+ |afternoon  |0.641580   |0.861821   |0.735568   |
+ |-----------|-----------|-----------|-----------|
+
+
+
+  lower, tokenization, bag of words, stemming, removed stopwords, removed words with Digits and Alpha characters, High information words (train and test)
+
+   Accuracy: 1.000000
+ |-----------|-----------|-----------|-----------|
+ |category   |precision  |recall     |F-measure  |
+ |-----------|-----------|-----------|-----------|
+ |morning    |1.000000   |1.000000   |1.000000   |
+ |afternoon  |1.000000   |1.000000   |1.000000   |
+ |-----------|-----------|-----------|-----------|
