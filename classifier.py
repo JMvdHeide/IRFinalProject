@@ -6,6 +6,7 @@ from nltk.tokenize import TweetTokenizer
 from featx import bag_of_words, high_information_words, bag_of_words_in_set
 from classification import precision_recall
 import nltk
+from nltk.util import ngrams
 from nltk.classify import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
@@ -50,25 +51,26 @@ def get_feats(times_of_day, data_set):
     """Reads the golden standard CSV file and puts the content in bags of words"""
     print("\n##### Reading {} files...".format(data_set))
     feats = list()
-    stemmer = SnowballStemmer("english")
-    stop_words = set(stopwords.words('english'))
+    stemmer = SnowballStemmer("dutch")
+    stop_words = set(stopwords.words('dutch'))
 
     for item in times_of_day:
-        tweets_txt = open(item + '/' + data_set + '.csv')
+        tweets_txt = open(item + '/' + data_set + '.txt')
         c = 0
         for line in tweets_txt.readlines():
             c += 1
-            line = line.split(',')
-            text = line[0].lower()
-            tweets_txt = tweets_txt
+            # line = line.split(',')
+            text = line.lower()
             tokens = TweetTokenizer().tokenize(text)
+            bigrams = ngrams(tokens,2)
 
-            filtered_tokens = [stemmer.stem(
-                w) for w in tokens if w not in stop_words if not onlyDigits(w)]
-            bag = bag_of_words(filtered_tokens)
+            filtered_tokens = [
+                w for w in tokens if w not in stop_words if not onlyDigits(w)]
+            bigrams = ngrams(filtered_tokens,3)
+            bag = bag_of_words(bigrams)
             feats.append((bag, item))
-            #if c == 50000:
-                #break
+            if c == 50000:
+                break
 
         print("{} {} tweets read".format(c, item))
 
@@ -120,10 +122,12 @@ def evaluation(classifier, test_feats, categories):
 
 
 def high_information(feats, categories):
-    """Obtain the high information words."""
     print("\n##### Obtaining high information words...")
+
     labelled_words = [(category, []) for category in categories]
 
+    # 1. convert the formatting of our features to that required by high_information_words
+    from collections import defaultdict
     words = defaultdict(list)
     all_words = list()
     for category in categories:
@@ -135,34 +139,52 @@ def high_information(feats, categories):
         for w in bag.keys():
             words[category].append(w)
             all_words.append(w)
+#		break
+
     labelled_words = [(category, words[category]) for category in categories]
+    # print labelled_words
 
-    hfw_lst = list(high_information_words(labelled_words))
-
-    hfw_feats = []
-    for c, words in labelled_words:
-
-        for w in words:
-
-            if w not in hfw_lst:
-                words.remove(w)
-        hfw = words.copy()
-        hfw = dict((el, True) for el in hfw)
-        hfw_feats.append((hfw, c))
+    # 2. calculate high information words
+    # high_info_words = set(high_information_words(labelled_words,min_score=0))
+    # high_info_words = set(high_information_words(labelled_words,min_score=5))
+    # high_info_words = set(high_information_words(labelled_words,min_score=7))
+    # high_info_words = set(high_information_words(labelled_words,min_score=9))
+    high_info_words = set(high_information_words(labelled_words, min_score=10))
+    # high_info_words = set(high_information_words(labelled_words,min_score=12))
+    # high_info_words = set(high_information_words(labelled_words,min_score=15))
+    # print(high_info_words)
+    # high_info_words contains a list of high-information words. You may want to use only these for classification.
+    # You can restrict the words in a bag of words to be in a given 2nd list (e.g. in function read_files)
+    # e.g. bag_of_words_in_set(words, high_info_words)
 
     print("  Number of words in the data: %i" % len(all_words))
     print("  Number of distinct words in the data: %i" % len(set(all_words)))
-    print("  Number of distinct 'high-information' words in the data: %i"
-          % len(hfw_feats))
+    print("  Number of distinct 'high-information' words in the data: %i" %
+          len(high_info_words))
 
-    return hfw_feats
+    return high_info_words
 
 
 def main():
-    data_sets = ['train', 'test']
+    data_sets = ['train', 'dev']
     times_of_day = ['morning', 'afternoon']
     train_feats = get_feats(times_of_day, 'train')
-    test_feats = get_feats(times_of_day, 'test')
+    test_feats = get_feats(times_of_day, 'dev')
+
+    high_info_train_words = high_information(train_feats, times_of_day)
+    high_info_train_feats = []
+    high_info_test_words = high_information(test_feats, times_of_day)
+    high_info_test_feats = []
+    for item in train_feats:
+        high_info_train_feats.append(
+                (dict([(word, True) for word in high_info_train_words if word in item[0]]), item[1]))
+    print('high info words', len(high_info_train_words))
+    print('high info feats', len(high_info_train_feats))
+    for item in test_feats:
+        high_info_test_feats.append(
+            (dict([(word, True) for word in high_info_test_words if word in item[0]]), item[1]))
+    print('high info words', len(high_info_test_words))
+    print('high info feats', len(high_info_test_feats))
 
     classifier = train(train_feats)
     evaluation(classifier, test_feats, times_of_day)

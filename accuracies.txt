@@ -1,6 +1,6 @@
 
 
-Only lower, tokenization, bag of words
+Vanaf hier 50000 Only lower, tokenization, bag of words
 
  Accuracy: 0.654494
  |-----------|-----------|-----------|-----------|
@@ -139,7 +139,7 @@ lower, tokenization, bag of words, removed stopwords
 
 
 
-  lower, tokenization, bag of words, stemming, removed stopwords, removed words with Digits and Alpha characters, High information words (train and test)
+Tot hier 50000 lower, tokenization, bag of words, stemming, removed stopwords, removed words with Digits and Alpha characters, High information words (train and test)
 
    Accuracy: 1.000000
  |-----------|-----------|-----------|-----------|
@@ -150,22 +150,40 @@ lower, tokenization, bag of words, removed stopwords
  |-----------|-----------|-----------|-----------|
 
 
-
-English:
-Train files:
-2464912 morning tweets read
-2288540 afternoon tweets read
-
-Test files:
-347298 morning tweets read
-321324 afternoon tweets read
-
-
-  lower, tokenization, bag of words, stemming, removed stopwords, removed words with digits and alpha characters
-  Accuracy: 0.580815
+50000: lower, tokenization, bag of words, stemming, removed stopwords, removed words with Digits, high info
+  Accuracy: 0.596516
  |-----------|-----------|-----------|-----------|
  |category   |precision  |recall     |F-measure  |
  |-----------|-----------|-----------|-----------|
- |morning    |0.563969   |0.850684   |0.678272   |
- |afternoon  |0.641778   |0.289132   |0.398660   |
+ |morning    |0.494693   |0.512357   |0.503370   |
+ |afternoon  |0.668260   |0.652411   |0.660241   |
  |-----------|-----------|-----------|-----------|
+50000: lower, tokenization, bag of words, removed stopwords, removed words with Digits
+ Accuracy: 0.659953
+|-----------|-----------|-----------|-----------|
+|category   |precision  |recall     |F-measure  |
+|-----------|-----------|-----------|-----------|
+|morning    |0.564231   |0.649859   |0.604026   |
+|afternoon  |0.741384   |0.666658   |0.702038   |
+|-----------|-----------|-----------|-----------|
+
+50000: lower, tokenization, bag of words, removed stopwords, removed words with Digits, bigrams
+Accuracy: 0.644317
+|-----------|-----------|-----------|-----------|
+|category   |precision  |recall     |F-measure  |
+|-----------|-----------|-----------|-----------|
+|morning    |0.552623   |0.571169   |0.561743   |
+|afternoon  |0.708695   |0.692899   |0.700708   |
+|-----------|-----------|-----------|-----------|
+
+
+
+ Alles: lower, tokenization, bag of words, stemming, removed stopwords, removed words with Digits
+
+    Accuracy: 0.735530
+   |-----------|-----------|-----------|-----------|
+   |category   |precision  |recall     |F-measure  |
+   |-----------|-----------|-----------|-----------|
+   |morning    |0.706299   |0.577451   |0.635409   |
+   |afternoon  |0.749688   |0.840520   |0.792510   |
+   |-----------|-----------|-----------|-----------|
