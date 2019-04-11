@@ -176,6 +176,39 @@ Accuracy: 0.644317
 |afternoon  |0.708695   |0.692899   |0.700708   |
 |-----------|-----------|-----------|-----------|
 
+50000: lower, tokenization, bag of words, removed stopwords, removed words with Digits, trigrams
+Accuracy: 0.660943
+|-----------|-----------|-----------|-----------|
+|category   |precision  |recall     |F-measure  |
+|-----------|-----------|-----------|-----------|
+|morning    |0.623123   |0.380683   |0.472626   |
+|afternoon  |0.673138   |0.847081   |0.750158   |
+|-----------|-----------|-----------|-----------|
+50000: lower, tokenization, bag of words, removed stopwords, removed words with Digits, character trigrams
+Accuracy: 0.618619
+|-----------|-----------|-----------|-----------|
+|category   |precision  |recall     |F-measure  |
+|-----------|-----------|-----------|-----------|
+|morning    |0.518939   |0.608117   |0.560000   |
+|afternoon  |0.706194   |0.625594   |0.663455   |
+|-----------|-----------|-----------|-----------|
+
+50000: lower, tokenization, bag of words, removed stopwords, removed words with Digits, trigrams, LinearSVC
+Accuracy: 0.660927
+|-----------|-----------|-----------|-----------|
+|category   |precision  |recall     |F-measure  |
+|-----------|-----------|-----------|-----------|
+|morning    |0.637810   |0.348033   |0.450333   |
+|afternoon  |0.667363   |0.868738   |0.754851   |
+|-----------|-----------|-----------|-----------|
+50000: lower, tokenization, bag of words, removed stopwords, removed words with Digits, trigrams, MultinomialNB
+Accuracy: 0.654923
+|-----------|-----------|-----------|-----------|
+|category   |precision  |recall     |F-measure  |
+|-----------|-----------|-----------|-----------|
+|morning    |0.595923   |0.420441   |0.493033   |
+|afternoon  |0.678047   |0.810656   |0.738445   |
+|-----------|-----------|-----------|-----------|
 
 
  Alles: lower, tokenization, bag of words, stemming, removed stopwords, removed words with Digits

@@ -8,7 +8,7 @@ from classification import precision_recall
 import nltk
 from nltk.util import ngrams
 from nltk.classify import SklearnClassifier
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.naive_bayes import MultinomialNB, GaussianNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC, LinearSVC, NuSVC
 import sys
@@ -62,10 +62,10 @@ def get_feats(times_of_day, data_set):
             # line = line.split(',')
             text = line.lower()
             tokens = TweetTokenizer().tokenize(text)
-            bigrams = ngrams(tokens,2)
 
             filtered_tokens = [
                 w for w in tokens if w not in stop_words if not onlyDigits(w)]
+            #chars = [w for i in filtered_tokens for w in i]
             bigrams = ngrams(filtered_tokens,3)
             bag = bag_of_words(bigrams)
             feats.append((bag, item))
@@ -171,20 +171,20 @@ def main():
     train_feats = get_feats(times_of_day, 'train')
     test_feats = get_feats(times_of_day, 'dev')
 
-    high_info_train_words = high_information(train_feats, times_of_day)
-    high_info_train_feats = []
-    high_info_test_words = high_information(test_feats, times_of_day)
-    high_info_test_feats = []
-    for item in train_feats:
-        high_info_train_feats.append(
-                (dict([(word, True) for word in high_info_train_words if word in item[0]]), item[1]))
-    print('high info words', len(high_info_train_words))
-    print('high info feats', len(high_info_train_feats))
-    for item in test_feats:
-        high_info_test_feats.append(
-            (dict([(word, True) for word in high_info_test_words if word in item[0]]), item[1]))
-    print('high info words', len(high_info_test_words))
-    print('high info feats', len(high_info_test_feats))
+    # high_info_train_words = high_information(train_feats, times_of_day)
+    # high_info_train_feats = []
+    # high_info_test_words = high_information(test_feats, times_of_day)
+    # high_info_test_feats = []
+    # for item in train_feats:
+    #     high_info_train_feats.append(
+    #             (dict([(word, True) for word in high_info_train_words if word in item[0]]), item[1]))
+    # print('high info words', len(high_info_train_words))
+    # print('high info feats', len(high_info_train_feats))
+    # for item in test_feats:
+    #     high_info_test_feats.append(
+    #         (dict([(word, True) for word in high_info_test_words if word in item[0]]), item[1]))
+    # print('high info words', len(high_info_test_words))
+    # print('high info feats', len(high_info_test_feats))
 
     classifier = train(train_feats)
     evaluation(classifier, test_feats, times_of_day)
