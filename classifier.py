@@ -30,12 +30,15 @@ def onlyDigits(token):  # 7
 
 
 def isUrl(token):  # 12
-    '''Is the token a URL? URLs are defined as starting with "http" followed by either ":" or "/".'''
-    if re.match(r'http[:/]', token):
+    '''Is the token a URL? URLs are defined as starting with "https" followed by either ":" or "/".'''
+    if re.match(r'https[:/]', token):
         return 1
     return 0
 
-
+def hasHashtag(token):
+    if re.search(r'#',token):
+        return 1
+    return 0
 def containsDigitAndAlpha(token):  # 6
     '''Does the token contain both digits and alphanumeric characters?'''
     if re.search(r'\d', token) and re.search(r'[a-zA-Z]', token):
@@ -59,18 +62,16 @@ def get_feats(times_of_day, data_set):
         c = 0
         for line in tweets_txt.readlines():
             c += 1
-            # line = line.split(',')
-            text = line.lower()
-            tokens = TweetTokenizer().tokenize(text)
+            tokens = TweetTokenizer(preserve_case=False).tokenize(line)
 
             filtered_tokens = [
                 w for w in tokens if w not in stop_words if not onlyDigits(w)]
             #chars = [w for i in filtered_tokens for w in i]
-            bigrams = ngrams(filtered_tokens,3)
-            bag = bag_of_words(bigrams)
+            #bigrams = ngrams(filtered_tokens,2)
+            bag = bag_of_words(filtered_tokens)
             feats.append((bag, item))
-            if c == 50000:
-                break
+            #if c == 5000:
+                #break
 
         print("{} {} tweets read".format(c, item))
 
@@ -164,12 +165,22 @@ def high_information(feats, categories):
 
     return high_info_words
 
+# show informative features
+def analysis(vectorizer, clf, n=50):
+    feature_names = vectorizer.get_feature_names()
+    coefs_with_fns = sorted(zip(clf.coef_[0], feature_names))
+    top = zip(coefs_with_fns[:n], coefs_with_fns[:-(n + 1):-1])
+    with open('most_info.csv','w') as f:
+        for (coef_1, fn_1), (coef_2, fn_2) in top:
+            f.write("{},{},{},{}\n".format(coef_1,fn_1,coef_2,fn_2))
+
+            print("\t%.4f\t%-15s\t\t%.4f\t%-15s" % (coef_1, fn_1, coef_2, fn_2))
 
 def main():
-    data_sets = ['train', 'dev']
+    data_sets = ['train', 'test']
     times_of_day = ['morning', 'afternoon']
     train_feats = get_feats(times_of_day, 'train')
-    test_feats = get_feats(times_of_day, 'dev')
+    test_feats = get_feats(times_of_day, 'test')
 
     # high_info_train_words = high_information(train_feats, times_of_day)
     # high_info_train_feats = []
@@ -189,6 +200,7 @@ def main():
     classifier = train(train_feats)
     evaluation(classifier, test_feats, times_of_day)
 
+    analysis(classifier._vectorizer,classifier._clf)
 
 if __name__ == '__main__':
     main()
